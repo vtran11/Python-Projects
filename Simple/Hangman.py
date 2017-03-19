@@ -63,6 +63,9 @@ def main():
                 return
             else:
                 print("Your guess should be 1 letter or a {}-letter word):".format(len(word)))
+        else:
+            print("Invalid input!")
+                        
 
     print("You can not guess the word after 20 tries!!Game Over.")
 main()
