@@ -37,6 +37,7 @@ def check(word, guess, guessList):
     return output
 
 def main():
+    guessList = []
     word = word_list() #get the word
     
     print("Welcome to the Hangman game!!!")
@@ -45,22 +46,23 @@ def main():
     
     for index in range(1,21):
         list = "Enter your guess (1 letter or a {}-letter word): ".format(len(word))
-        guess = input(list)
+        guess = raw_input(list)
         guess = guess.upper()
-        guessList = []
         
         if len(guess) is 1:
             guessList.append(guess)
             checkWord = check(word, guess, guessList)
             print(checkWord)
-            if checkWord is word:
+            if checkWord == word.upper():
                 print("Yes!!!You are correct! The word is {}".format(word))
-                index = 20
+                return
     
         elif len(guess) is len(word):
-            if guess is word:
+            if guess == word.upper():
                 print("Yes!!!You are correct! The word is {}".format(word))
-                index = 20
+                return
             else:
                 print("Your guess should be 1 letter or a {}-letter word):".format(len(word)))
+
+    print("You can not guess the word after 20 tries!!Game Over.")
 main()
